@@ -45,7 +45,7 @@ while (True):
     		print("Send message")
 			#Send message
     		api_user.messages.send(user_id=user_vk_id, random_id=random.randint(0,100), message=private_message)
-    		if iter_num%10==0:
-				#[SERVICE]Check every 10 iters that all works 
-    		    api_user.messages.send(user_id=user_vk_id, random_id=random.randint(0,100), message="Приложение работает стабильно")
+	if iter_num%10==0:
+		#[SERVICE]Check every 10 iters that all works 
+		api_user.messages.send(user_id=user_vk_id, random_id=random.randint(0,100), message="Приложение работает стабильно")
     time.sleep(10)
