@@ -7,7 +7,7 @@ access_token = ""
 group_user_id = ""
 group_hse_id = ""
 message = "Данилов Сергей 18ПИ-2"
-latest_record = {}
+latest_record = []
 
 ####Code#################################
 
@@ -18,11 +18,18 @@ if not (vk):
 	wait = input()
 	exit()
 api = vk.get_api()
-print("Authentication successful")
 
+###Fetch
 for i in range(0, 3):
 	print("Fetch latest record from public")
-	latest_record = api.wall.get(owner_id=group_hse_id, count=1)
+	try:
+		latest_record = api.wall.get(owner_id=group_hse_id, count=1)
+	except:
+		f_log = open("log"+str(time.time())+".txt")
+		f_log.write("Error when fetch latest")
+		f_log.close()
 	print("Message: "+latest_record[0]["id"]+" >>>  "+latest_record[0]["text"])
 	time.sleep(60)
+
+
 wait = input()
